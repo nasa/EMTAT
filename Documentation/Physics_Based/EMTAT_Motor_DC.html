@@ -1,0 +1,139 @@
+<script type="text/javascript"
+     src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<head>
+    <link rel="stylesheet" href="stylesheet_TMATS.css">
+</head>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<title>
+    EMTAT: Help for Physics-based DC Motor Library Block
+</title>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<body>
+    <h1>
+		EMTAT: Physics-based DC Motor Library Block
+    </h1>
+<hr>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<h2>
+	Purpose
+</h2>
+<p>
+    This block can be used to simulate the performance of a single phase direct current (DC) motor using basic mechanical and electrical dynamics and properties as well as themal properties.
+</p>
+
+<br>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<h2>
+    Background
+</h2>
+
+<p>
+    Kirchhoffs voltage law is used to form the dynamic electrical equation of a series wound  DC motor.
+</p>
+<p>
+	<center>
+		<img src="https://latex.codecogs.com/gif.latex?V-Ri-K\omega-L\frac{di}{dt}&space;=0" title="V-Ri-K\omega-L\frac{di}{dt} =0" />
+	</center>
+</p>
+<p>
+    in which <i>V</i> is the source voltage, <i>R</i> is the armature resistance, <i>i</i> is the armature current, <i>K</i> is the torque/back EMF constant, <i>&omega;</i> is the motor shaft speed, and <i>L</i> is the armature inductance. 
+</p>
+<p>
+	A torque balance on the shaft of the motor is used to form the dynamic mechanical equation
+</p>
+<p>
+	<center>
+		<img src="https://latex.codecogs.com/gif.latex?J\frac{d\omega}{dt}&plus;b\omega-Ki&plus;T_l=0" title="J\frac{d\omega}{dt}+b\omega-Ki+T_l=0" />
+	</center>
+</p>
+	in which <i>J</i> is the motor inertia, <i>b</i> is the motor damping, and <i>T<sub>l</sub></i> is the external load applied to the motor shaft.
+<p>	
+	The performance changes of the motor due to ambient temperature changes are achieved by varying the armature resistance and the torque/back EMF constant as a function of temperature. Here is the equation for the change in armature resistance
+</p>
+<p>
+	<center>
+		<img src="https://latex.codecogs.com/gif.latex?R_f&space;=&space;R_i[1&plus;\alpha_a(T_f-T_i)]" title="R_f = R_i[1+\alpha_a(T_f-T_i)]" />
+	</center>
+</p>
+<p>
+	in which <i>R<sub>f</sub></i> is the final armature resistance, <i>R<sub>i</sub></i> is the initial armature resistance, <i>&alpha;<sub>a</sub></i> is the armature material temperature constant, <i>T<sub>f</sub></i> is the final temperature, and <i>T<sub>i</sub></i> is the initial temperature. Similarly, the equation for the change in the torque/back EMF constant is
+</p>
+<p>
+	<center>
+		<img src="https://latex.codecogs.com/gif.latex?K_f&space;=&space;K_i[1&plus;\alpha_m(T_f-T_i)]" title="K_f = K_i[1+\alpha_m(T_f-T_i)]" />
+	</center>
+</p>
+<p>
+	in which <i>K<sub>f</sub></i> is the final torque/back EMF constant, <i>K<sub>i</sub></i> is the initial torque/back EMF constant, and <i>&alpha;<sub>m</sub></i> is the magnet material termperature constant.
+</p>
+
+<br><hr><br>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<h2>
+	Inputs
+</h2>
+
+<table border="y">
+    <tr><th>Port</th><th>Description</th><th>Unit</th><th>Dimension</th></tr>
+    <tr><td>Iin</td><td>Input current</td><td>A</td><td>1x1</td></tr>
+    <tr><td>N</td><td>Shaft speed</td><td>RPM</td><td>1x1</td></tr>
+	<tr><td>Vin</td><td>Input voltage</td><td>V</td><td>1x1</td></tr>
+	<tr><td>Load Torque</td><td>Torque imposed on the shaft of the motor</td><td>N-m</td><td>1x1</td></tr>
+	<tr><td>T_Ambient</td><td>Ambient temperature</td><td>&degF, &degC, &degR, or K</td><td>1x1</td></tr>
+</table>
+
+<br><br>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<h2>
+        Outputs
+</h2>
+
+<table border="y">
+    <tr><th>Port</th><th>Description</th><th>Unit</th><th>Dimension</th></tr>
+    <tr><td>Iin</td><td>Input current</td><td>A</td><td>1x1</td></tr>
+	<tr><td>Iin_dot</td><td>Derivative of input current</td><td>A/s</td><td>1x1</td></tr>
+	<tr><td>N_dot</td><td> Shaft acceleration</td><td>rev/(min-s) or RPM/s</td><td>1x1</td></tr>
+	<tr><td>Motor Torque</td><td>Torque produced by motor</td><td>N-m</td><td>1x1</td></tr>
+	<tr><td>Heat</td><td>Heat generated due to resistive effects of armature</td><td>J</td><td>1x1</td></tr>
+
+</table>
+
+<br><br>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<h2>
+	Mask
+</h2>
+
+<table border="y">
+    <tr><th>Tab</th><th>Variable</th><th>Description</th><th>Unit</th><th>Dimension</th></tr>
+    <tr><td rowspan="7">Performance Parameters</td><td>material_c</td><td>winding material<ul><li>Silver</li><li>Gold</li><li>Copper</li><li>Aluminum</li></td><td>N/A</td><td>N/A</td></tr>
+    <tr><td> 								  		   material_m</td><td>magnet material<ul><li>Ceramic</li><li>Samarium Cobalt (SmCo)</li><li>Aluminum Nickel Cobalt (AlNiCo)</li><li>Neodymium Iron Boron (NdFeB)</li></td><td>N/A</td><td>N/A</td></tr>
+    <tr><td> 								  		   K</td><td>torque/back EMF constant</td><td>N-m/A or V-s/rad</td><td>1x1</td></tr>
+	<tr><td> 								  		   La</td><td>armature inductance @ 20 degrees celcius</td><td>H</td><td>1x1</td></tr>
+	<tr><td> 								  		   Ra</td><td>armature resistance @ 20 degrees celcius</td><td>&Omega;</td><td>1x1</td></tr>
+	<tr><td> 								  		   Jm</td><td>motor inertia</td><td>kg-m^2</td><td>1x1</td></tr>
+	<tr><td> 								  		   bm</td><td>motor damping</td><td>N-m-s</td><td>1x1</td></tr>
+	<tr><td rowspan="1">Temperature Units</td><td>TempIn</td><td>temperature unit specification for T_Ambient port</td><td>N/A</td><td>N/A</td></tr>
+    <tr><td rowspan="7">iDesign</td><td>iDesign</td><td>iDesign toggle</td><td>0 - OFF, 1 - ON</td><td>1x1</td></tr>
+    <tr><td> 								  		   V</td><td>operating voltage of motor</td><td>V</td><td>1x1</td></tr>
+    <tr><td> 								  		   Pmax</td><td>maximum power of motor</td><td>W</td><td>1x1</td></tr>
+	<tr><td> 								  		   Wn</td><td>maximum speed of motor with no load applied to shaft or "no load" speed</td><td>RPM</td><td>1x1</td></tr>
+	<tr><td> 								  		   Ra</td><td>the amount of current that overcomes the damping effects of the motor and causes it to begin rotating or 'no load' current</td><td>A</td><td>1x1</td></tr>
+	<tr><td> 								  		   Tm</td><td>the amount of time for an unloaded motor to rise to 63% of its final velocity after application of a command voltage</td><td>s</td><td>1x1</td></tr>
+	<tr><td> 								  		   Te</td><td>the amount of time it takes the current in the winding of an unloaded motor to reach 63% of its rated value upon application of a command voltage</td><td>s</td><td>1x1</td></tr>
+</table>
+
+<br>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+</body>
