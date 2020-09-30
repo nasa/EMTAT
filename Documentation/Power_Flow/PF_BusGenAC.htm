@@ -1,0 +1,63 @@
+﻿<h2><span style="color: #003300;"><strong>Power Flow AC Generator Bus</strong></span></h2>
+<h3>&nbsp;</h3>
+<h3><strong><span style="color: #0000ff;">Block Description</span></strong></h3>
+<p>The generator bus component enables the addition of external known real power generation at a regulated voltage. For this block, a real generated power at a specified voltage is defined. This real power is then compared with a calculated real power to determine a power error, and input voltage is compared with the specified voltage to determine phase angle and reactive power. Note: Pload and Vspecified are known values, P and Q are independents solved for by the solver, and Per and Ver are dependents to be forced to zero by the solver. As an additional complexity, there also exists a maximum reactive power that once met becomes a limit.</p>
+<h3><strong><span style="color: #0000ff;">Mask Parameters</span></strong></h3>
+<table border="5">
+<tbody>
+<tr>
+<td>PelInEN_M</td>
+<td>External Pelec</td>
+</tr>
+<tr>
+<td>Vispec_M</td>
+<td>specified absolute value of voltage</td>
+</tr>
+<tr>
+<td>P_M</td>
+<td>generated (specified) real power</td>
+</tr>
+<tr>
+<td>Qmax_M</td>
+<td>max reactive power</td>
+</tr>
+<tr>
+<td>Qmin_M</td>
+<td>min reactive power</td>
+</tr>
+</tbody>
+</table>
+<h3><strong><span style="color: #0000ff;">Input Variables</span></strong></h3>
+<table style="height: 108px;" border="5" width="629">
+<tbody>
+<tr>
+<td style="width: 45px;">Vin</td>
+<td style="width: 560px;">Complex voltage at side A (input). Requires a 2 element vector of the form: [Magnitude, phase angle]</td>
+</tr>
+<tr>
+<td style="width: 45px;">I_cmp</td>
+<td style="width: 560px;">Vector of all side A currents and side B currents ie. currents flowing into or from side A (input) of the block and currents flowing into or from side B (output of the block). These are summed internally for use in power error calculation</td>
+</tr>
+</tbody>
+</table>
+<h3><strong><span style="color: #0000ff;">Output Variables</span></strong></h3>
+<table style="height: 263px;" border="5" width="631">
+<tbody>
+<tr>
+<td style="width: 52px;">Vout</td>
+<td style="width: 555px;">Voltage at side B (output). It is a bussed signal consisting of the magnitude of Vin (signal 1) and the phase angle of Vin (signal 2)</td>
+</tr>
+<tr>
+<td style="width: 52px;">P_Er</td>
+<td style="width: 555px;">Difference between the calculated power dependent on Vin and I_cmp and the specified real power P_M</td>
+</tr>
+<tr>
+<td style="width: 52px;">Gen_Er</td>
+<td style="width: 555px;">If Reactive power is not at Qmin or Qmax, this will ouput the voltage error determined by the difference between the specified voltage and Vin. If reactive power reaches or exceeds Qmin or Qmax, this will switch to outputing Q_Er (difference between the Q limit that is exceeded [max or min] and the calculated reactive power. This signal is a solver dependent to be driven to zero.</td>
+</tr>
+<tr>
+<td style="width: 52px;">Data</td>
+<td style="width: 555px;">2-signal bussed output consisting of calculated real power (signal 1) and calculated reactive power (signal 2). If reactive power exceeds the limits imposed by Qmin or Qmax, the the respective limit value will be signal 2's output instead of the calculated value. This signal is a solver dependent to be driven to zero.</td>
+</tr>
+</tbody>
+</table>

@@ -1,0 +1,47 @@
+﻿<h2><span style="color: #003300;"><strong>Power Flow DC Generator Bus</strong></span></h2>
+<h3>&nbsp;</h3>
+<h3><strong><span style="color: #0000ff;">Block Description</span></strong></h3>
+<p>This block acts to output a constant user specified power by adjusting either a voltage or current input signal for the appropriate power output in simulation. </p>
+<h3><strong><span style="color: #0000ff;">Mask Parameters</span></strong></h3>
+<table border="5">
+<tbody>
+<tr>
+<td>PeInEN_M</td>
+<td>External Pelec</td>
+</tr>
+<tr>
+<td>P_M</td>
+<td>generated real power</td>
+</tr>
+</tbody>
+</table>
+<h3><strong><span style="color: #0000ff;">Input Variables</span></strong></h3>
+<table border="5">
+<tbody>
+<tr>
+<td>Vin</td>
+<td>Voltage at input</td>
+</tr>
+<tr>
+<td>I</td>
+<td>Current entering node through input.</td>
+</tr>
+</tbody>
+</table>
+<h3><strong><span style="color: #0000ff;">Output Variables</span></strong></h3>
+<table style="height: 99px;" border="5" width="566">
+<tbody>
+<tr>
+<td style="width: 34px;">Vout</td>
+<td style="width: 508px;">Voltage at output</td>
+</tr>
+<tr>
+<td style="width: 34px;">P_Er</td>
+<td style="width: 508px;">Difference between calculated power and specified power. Dependent to be driven to zero by the local solver.</td>
+</tr>
+<tr>
+<td style="width: 34px;">Data</td>
+<td style="width: 508px;">Calculated power</td>
+</tr>
+</tbody>
+</table>

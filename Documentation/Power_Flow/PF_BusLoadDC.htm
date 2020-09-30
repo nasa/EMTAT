@@ -1,0 +1,52 @@
+﻿<h2><span style="color: #003300;"><strong>Power Flow </strong></span><span style="color: #003300;"><strong>DC Load Bus</strong></span></h2>
+<h3>&nbsp;</h3>
+<h3><strong><span style="color: #0000ff;">Block Description</span></strong></h3>
+<p>The load bus component enables the addition of external known power loads. For this block, a real power load is defined. This real power is then compared with a calculated real power input to determine a power error that can be used to back calculate the system voltages. The basic equations that govern the block are shown in the equation below. Note: P (the bussed signal contained in Data) is a calculated value, P_M is a known value, and P_er is a dependent to be driven to zero by the solver.</p>
+<p><strong><em>Vin = Vout</em></strong></p>
+<div data-ccp-timestamp="1561055100545"><strong><em>P = Vin &times; &sum;I&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</em></strong></div>
+<div data-ccp-timestamp="1561055100545">&nbsp;</div>
+<div data-ccp-timestamp="1561055100545"><strong><em>P_Er = P - P_M</em></strong></div>
+<div data-ccp-timestamp="1561055100545">&nbsp;</div>
+<h3><strong><span style="color: #0000ff;">Mask Parameters</span></strong></h3>
+<table border="5">
+<tbody>
+<tr>
+<td>PeInEN_M</td>
+<td>External Pelec</td>
+</tr>
+<tr>
+<td>P_M</td>
+<td>Real power</td>
+</tr>
+</tbody>
+</table>
+<h3><strong><span style="color: #0000ff;">Input Variables</span></strong></h3>
+<table style="width: 264px;" border="5">
+<tbody>
+<tr>
+<td style="width: 23px;">Vin</td>
+<td style="width: 227px;">Voltage at input</td>
+</tr>
+<tr>
+<td style="width: 23px;">I</td>
+<td style="width: 227px;">Current entering node at input</td>
+</tr>
+</tbody>
+</table>
+<h3><strong><span style="color: #0000ff;">Output Variables</span></strong></h3>
+<table style="height: 99px;" border="5" width="600">
+<tbody>
+<tr>
+<td style="width: 34px;">Vout</td>
+<td style="width: 542px;">Voltage at output</td>
+</tr>
+<tr>
+<td style="width: 34px;">P_Er</td>
+<td style="width: 542px;">Difference between calculated power and specified power. Dependent to be driven to 0 by solver.</td>
+</tr>
+<tr>
+<td style="width: 34px;">Data</td>
+<td style="width: 542px;">Calculated power (P)</td>
+</tr>
+</tbody>
+</table>
