@@ -30,7 +30,7 @@ is released under the Apache V2.0 license agreement.
 <b>Getting Started</b> <br>
 Stable releases of EMTAT are located under the <a href= "https://github.com/nasa/EMTAT/releases" >releases tab</a>. It is encouraged that a user
 download the most up to date version using the appropriate software download button (green button). 
-Installation instructions are detailed in the user's manual which is included within the package. 
+Installation instructions are detailed in the user's guide which is included within the package (Documentation/TM-20205008125). 
 <br><br>
 EMTAT encourages open collaboration and if a user wishes to become a developer the software 
 may be forked at any time via the main page link.
