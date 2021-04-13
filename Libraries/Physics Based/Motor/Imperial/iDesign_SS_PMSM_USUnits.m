@@ -12,8 +12,8 @@ iDesign_SS_PMSM_USUnits(nPoles_i,Rs_i,Ls_i,S_nom_i,T_nom_i,P_out_max_i,I_max_i,P
 % Rs_i
 % Ls_i
 % S_nom_i
-T_nom_i = T_nom_i * 1.3558 %lbf-ft to Nm for internal use
-P_out_max_i = 765.7*P_out_max_i%HP to watts for internal use
+T_nom_i = T_nom_i %* 1.3558 (lbs-ft to Nm) Conversion removed as input is expected to be in lbs-ft (rather than Nm) as of 4/5/2021
+P_out_max_i = P_out_max_i %*765.7 (hp to W) Conversion removed as input is expected to be in W (rather than hp) as of 4/5/2021
 % I_max_i
 % P_in_max_i
 % K
@@ -22,7 +22,7 @@ P_out_max_i = 765.7*P_out_max_i%HP to watts for internal use
 % I_nom_i
 % PF_nom_i
 % P_Fe_Calc_Flag
-  T_max_i = T_max_i * 1.3558 %lbf-ft to Nm for internal use
+T_max_i = T_max_i %* 1.3558 (lbs-ft to Nm) Conversion removed as input is expected to be in lbs-ft (rather than Nm) as of 4/5/2021
 
 
 
