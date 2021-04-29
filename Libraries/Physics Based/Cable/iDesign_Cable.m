@@ -58,7 +58,7 @@ else
 t_i = R_c*(exp((K*V_max*sqrt(2/3)*t_v)/(a*radius_c)) - 1) + C;    %Insulator thickness, for use in insulator Area & Mass
 
 %Find area of insulator
-A_i = (t_i^2 + 2*t_i + radius_c)*pi();
+A_i = (t_i^2 + 2*t_i*radius_c)*pi();
 
 %Find mass of insulator
 Mass_i = A_i*Length*dens_i;
