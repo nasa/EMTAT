@@ -11,4 +11,5 @@ function blkStruct = slblocks
     % in the Library Browser
 
     blkStruct.Browser = Browser;
+
 end
