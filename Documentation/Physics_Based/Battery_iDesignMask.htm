@@ -1,4 +1,4 @@
-﻿<h2><span style="color: #003300;"><strong>Physics Based Battery</strong></span></h2>
+<h2><span style="color: #003300;"><strong>Physics Based Battery</strong></span></h2>
 <h3>&nbsp;</h3>
 <h3><strong><span style="color: #0000ff;">Block Description</span></strong></h3>
 <p><span style="color: #000000;">This block represents a physics-based battery model. The output voltage is a function of the current drawn from the battery ('Iout'), and the time integral of the current drawn from the battery, ('it', in Amp-hours). You need an integrator that takes in it_dot, and you need to feed that integrated it value into it_base. The initial condition for it_base should be zero, as this integrator should keep track of consumed charge, in amp-hours. If you put in a value other than 100% for SOC_Init_M, then you will see a difference between the it_base (which always starts at zero), and it as you get it from the Outputs structure, which accounts for the difference in SOC_Init_M from 100%.</span></p>
@@ -72,16 +72,16 @@
 <td>Charge consumed. Obtained by integrating battery current and multiplying by 1/3600 to convert to Ah</td>
 </tr>
 <tr>
-<td>IgIn</td>
-<td>Used for voltage output (Vout) and heat generated calculations</td>
+<td>Idemand</td>
+<td>Current demand on battery in Amps. Comes from the next component "downstream's" current demand, which the battery block uses to determine the value of Vout as well as the Power Error.</td>
 </tr>
 <tr>
-<td>Iout</td>
-<td>Battery Output Current. Comes from the next component "downstream's" current demand, which the battery block uses to determine the value of Vout as well as the Power Error.</td>
-</tr>
-<tr>
-<td>T_ambient</td>
+<td>Temp (Ra)</td>
 <td>Input to thermal model for battery core and surface temperature calculations</td>
+</tr>
+<tr>
+<td>Catastrophic Fault Toggle</td>
+<td>Boolean to trigger a cascading catastrophic fault, 0 for normal operation.</td>
 </tr>
 </tbody>
 </table>
@@ -92,10 +92,7 @@
 <td>Vout</td>
 <td>Output voltage</td>
 </tr>
-<tr>
-<td>P_err</td>
-<td>Output power error</td>
-</tr>
+
 <tr>
 <td>Outputs</td>
 <td>Output voltage, current, power, state of charge, charge being consumed, derivative of charge consumption, heat generation, internal core temperature, and internal surface temperature</td>
@@ -103,6 +100,18 @@
 <tr>
 <td>it_Dot</td>
 <td>Derivative of charge consumption</td>
+</tr>
+<tr>
+<td>Heat (W)</td>
+<td>Heat generated in battery.</td>
+</tr>
+<tr>
+<td>SOC</td>
+<td>Battery State of Charge in %</td>
+</tr>
+<tr>
+<td>it</td>
+<td>Consumed Charge</td>
 </tr>
 </tbody>
 </table>

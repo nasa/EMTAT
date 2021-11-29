@@ -1,0 +1,176 @@
+<h2><span style="color: rgb(0, 51, 0);"><strong>Physics Based Generator</strong></span></h2>
+
+<h3><strong><span style="color: rgb(0, 0, 255);">Block Description</span></strong></h3>
+<p>This block represents a generic permanent magnet synchronous generator whose electrical performance is calculated in dq0 space. The generator's performance is dictated by the electrical bus current demand and shaft speed input.&nbsp; All of the performance calculations and state space conversions are contained inside the block, and the related rectifier block provides realistic efficiency losses rather than calculate any specific waveforms.</p><p></p>This model was based on the Physics Based Motor model, which used sources from <a href="https://cdn.intechopen.com/pdfs/41486/InTech-Modeling_of_full_electric_and_hybrid_electric_vehicles.pdf">Intech</a> and <a href="https://ieeexplore.ieee.org/document/8123234/">IEEE</a>.<br><h3><strong><span style="color: rgb(0, 0, 255);">Mask Parameters</span></strong></h3>
+<table border="5">
+<tbody>
+<tr>
+<td>Pole Pairs</td>
+<td>Number of poles
+  in motor divided by 2</td>
+</tr>
+<tr>
+<td>Magnet Flux</td>
+<td>Permanent
+  magnet flux linkage (Weber)</td>
+</tr>
+<tr>
+<td>Stator Resistance</td>
+<td>Resistance
+  of stator winding (Ohms)</td>
+</tr>
+<tr>
+<td>Stator Inductance</td>
+<td>Inductance
+  of stator winding (H)</td>
+</tr>
+<tr>
+<td>Iron Losses at <br>nominal speed</td>
+<td>Iron
+  losses at nominal speed on spec. sheet (W)</td>
+</tr>
+<tr>
+<td>Nominal Speed</td>
+<td>Nominal
+  speed for specifications (RPM)</td>
+</tr>
+<tr>
+<td>Maximum/Nominal <br>reference torque</td>
+<td>Nominal
+  torque expected (lbs-ft)</td>
+</tr>
+<tr>
+<td>Maximum output power</td>
+<td>Maximum output
+  power (W)</td>
+</tr>
+<tr>
+<td>Current Limit</td>
+<td>Maximum current
+  through motor (A)</td>
+</tr>
+<tr>
+<td>Input power limit</td>
+<td>Maximum input power (W)</td>
+</tr>
+<tr>
+<td>Maximum allowable <br>torque</td>
+<td>Maximum
+  allowable torque (Nm)</td>
+</tr>
+</tbody>
+</table>
+<h3><strong><span style="color: rgb(0, 0, 255);">Input Variables</span></strong></h3>
+<table border="5">
+<tbody>
+<tr>
+<td>Idemand (RMS)</td>
+<td>Current demanded of the generator from connected electrical bus</td>
+</tr>
+<tr>
+<td>S_mech</td>
+<td>Speed (RPM)</td>
+</tr>
+<tr>
+<td>Catastrophic Fault Toggle</td>
+<td>Boolean input to completely fail the block</td>
+</tr>
+
+
+
+</tbody>
+</table>
+<h3><strong><span style="color: rgb(0, 0, 255);">Output Variables</span></strong></h3>
+<table border="5">
+<tbody>
+<tr>
+<td>T_demanded (ft-lbs)</td>
+<td>Torque demanded of connected shaft</td>
+</tr>
+<tr>
+<td>V_s</td>
+<td>Stator
+  voltage (V)</td>
+</tr>
+<tr>
+<td>PF</td>
+<td>Power
+  factor</td>
+</tr>
+<tr>
+<td>eff</td>
+<td>Overall block power efficiency</td>
+</tr>
+<tr>
+<td>Outputs</td>
+<td>Data bus collecting several variables:</td>
+</tr>
+<tr><td><ul><li>Signed Pdemanded</li></ul></td><td>Total electrical power demand on the generator, including losses</td></tr>
+<tr><td><ul><li>Signed Pmech</li></ul></td><td>Total mechanical power the generator can extract at the current shaft speed</td></tr>
+<tr><td><ul><li>f_elec</li></ul></td><td>Electrical
+  frequency (Hz)</td></tr>
+  <tr><td><ul><li>w_elec</li></ul></td><td>Angular electrical
+  frequency (rad/s)</td></tr>
+  <tr><td>Power Error</td><td>1 if P_Mechanical < P_demanded, else 0</td>
+</tbody>
+</table><br><h3><strong><span style="color: rgb(0, 0, 255);">iDesign Variables</span></strong></h3>
+<table border="5">
+<tbody>
+<tr>
+<td>Number of poles</td>
+<td>Number of poles</td>
+</tr>
+<tr>
+<td>Stator Resistance</td>
+<td>Stator resistance
+  (enter 0 to estimate), Ohm</td>
+</tr>
+<tr>
+<td>Stator Inductance</td>
+<td>Stator
+  inductance(enter 0 to estimate), H</td>
+</tr>
+<tr>
+<td>Nominal Speed</td>
+<td>Nominal Speed (RPM)</td>
+</tr>
+<tr>
+<td>Maximum/Nominal <br>reference torque</td>
+<td>Nominal or maximum expected Torque (lbs-ft)</td>
+</tr><tr>
+      <td>Maximum output power</td>
+      <td>Maximum expected output power (W)</td>
+    </tr>
+    <tr>
+      <td>Current Limit</td>
+      <td>Maximum expected output current (A)</td>
+    </tr>
+    <tr>
+      <td>Input power limut</td>
+      <td>Maximum expected input power (W)</td>
+    </tr>
+    <tr>
+      <td>Baxk EMF Constant</td>
+      <td>Back EMF constant
+  (V/kRPM)</td>
+    </tr>
+    <tr>
+      <td>Nominal Voltage</td>
+      <td>Maximum expected output voltage (V)</td>
+    </tr>
+    <tr>
+      <td>Maximum allowable torque</td>
+      <td>Maximum allowable
+  torque (lbs-ft)</td>
+    </tr>
+    <tr>
+      <td>Iron Loss at Nominal Conditions</td>
+      <td>Iron Loss at Nominal
+  conditions (manual input) (W)</td>
+    </tr>
+    <tr>
+      <td>Nominal Current</td>
+      <td>Nominal current (for
+  iron loss computation) (A)</td>
+    </tr></tbody>
+</table>
