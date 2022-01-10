@@ -65,7 +65,7 @@
 <tbody>
 <tr>
 <td>Idemand (RMS)</td>
-<td>Current demanded of the generator from connected electrical bus</td>
+<td>Current demanded of the generator from connected electrical bus (Amps)</td>
 </tr>
 <tr>
 <td>S_mech</td>
@@ -73,7 +73,15 @@
 </tr>
 <tr>
 <td>Catastrophic Fault Toggle</td>
-<td>Boolean input to completely fail the block</td>
+<td>Input for total component failure (Boolean, 0 or unconnected for regular operation)</td>
+</tr>
+<tr>
+<td>Flux Degradation Parameter</td>
+<td>Gradual degrading input for flux (0 or unconnected for regular operation.  Flux is multiplied by any other value directly.)</td>
+</tr>
+<tr>
+<td>Resistance Degradation Parameter</td>
+<td>Gradual degrading input for resistance (0 or unconnected for regular operation.  Resistance is multiplied by any other value directly.)</td>
 </tr>
 
 

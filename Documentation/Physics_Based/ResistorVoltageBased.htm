@@ -1,4 +1,4 @@
-﻿<h2><span style="color: #003300;"><strong>Physics Based Resistor - Voltage Based</strong></span></h2>
+<h2><span style="color: #003300;"><strong>Physics Based Resistor - Voltage Based</strong></span></h2>
 <h3>&nbsp;</h3>
 <h3><strong><span style="color: #0000ff;">Block Description</span></strong></h3>
 <p>This block is a voltage based resistor, adjusting the resistance to achieve the desired current flow at a given voltage.</p>
@@ -18,12 +18,20 @@
 <td>Desired voltage drop</td>
 </tr>
 <tr>
-<td>Resistance</td>
-<td>"Resistance Independent variable"</td>
+<td>Temp (Ra)</td>
+<td>Ambient Temperature (°R)</td>
 </tr>
 <tr>
-<td>T_in</td>
-<td>Ambient Temperature</td>
+<td>Resistance</td>
+<td>Component resistance (Ohms)</td>
+</tr>
+<tr>
+<td>Catastrophic Fault Toggle</td>
+<td>Input for total component failure (Boolean, 0 or unconnected for regular operation)</td>
+</tr>
+<tr>
+<td>Degradation Parameter</td>
+<td>Gradual degrading input for resistance (0 or unconnected for regular operation.  Resistance is multiplied by any other value directly.)</td>
 </tr>
 
 
