@@ -75,48 +75,20 @@
 <tr>
 <td>V_batt</td>
 <td>DC power source
-  voltage</td>
-</tr>
-
-
-</table>
-<h3><strong><span style="color: #0000ff;">Run Script Inputs: Catatrophic Fault Toggle ( 0 = not faulted OR 1 = faulted )</span></strong></h3>
-<table border="5">  
-<tr>
-<td>mot_catastrophic_fault_toggle</td>
-<td>Motor Fault Toggle</td>
-</tr>
-</tbody>
-
-</table>
-<h3><strong><span style="color: #0000ff;">Run Script Inputs: Degradation Input ( > 0.0 )</span></strong></h3>
-<table border="5">  
-<tr>
-<td>mot_degradation_input</td>
-<td>Motor Degradation Input</td>
-</tr>
-</tbody>
-
-</table>
-<h3><strong><span style="color: #0000ff;">Run Script Inputs: Degradation-Driving Parameter Adjustment ( < 1.0 )</span></strong></h3>
-<table border="5">  
-<tr>
-<td>mot_flux_m_adjustment</td>
-<td>Parameter Adjustment for Magnetic Flux</td>
+  voltage (V)</td>
 </tr>
 <tr>
-<td>mot_R_s_adjustment</td>
-<td>Parameter Adjustment for Stator Resistance</td>
+<td>Catastrophic Fault Toggle</td>
+<td>Input for total component failure (Boolean, 0 or unconnected for regular operation)</td>
 </tr>
 <tr>
-<td>mot_P_Fe_Nom_adjustment</td>
-<td>Parameter Adjustment for Iron Losses at Nominal Speed</td>
+<td>Flux Degradation Parameter</td>
+<td>Gradual degrading input for flux (0 or unconnected for regular operation.  Flux is multiplied by any other value directly.)</td>
 </tr>
 <tr>
-<td>mot_S_nom_adjustment</td>
-<td>Parameter Adjustment for Nominal Speed</td>
+<td>Resistance Degradation Parameter</td>
+<td>Gradual degrading input for resistance (0 or unconnected for regular operation.  Resistance is multiplied by any other value directly.)</td>
 </tr>
-</tbody>
 
 
 

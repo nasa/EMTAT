@@ -1,4 +1,4 @@
-﻿<h2><span style="color: #003300;"><strong>Physics Based Resistor - Current Based</strong></span></h2>
+<h2><span style="color: #003300;"><strong>Physics Based Resistor - Current Based</strong></span></h2>
 <h3>&nbsp;</h3>
 <h3><strong><span style="color: #0000ff;">Block Description</span></strong></h3>
 <p>This block is a current based resistor, adjusting resistance to achieve a desired voltage drop at a given current.</p>
@@ -15,43 +15,23 @@
 <tbody>
 <tr>
 <td>Iout</td>
-<td>Required Output Current</td>
+<td>Required Output Current (Amps)</td>
 </tr>
 <tr>
-<td>T_in</td>
-<td>Ambient Temperature</td>
+<td>Temp (Ra)</td>
+<td>Ambient Temperature (°R)</td>
 </tr>
 <tr>
 <td>Resistance</td>
-<td>"Resistance Independent variable"</td>
+<td>Component resistance (Ohms)</td>
 </tr>
-</tbody>
-
-
-</table>
-<h3><strong><span style="color: #0000ff;">Run Script Inputs: Catatrophic Fault Toggle ( 0 = not faulted OR 1 = faulted )</span></strong></h3>
-<table border="5">  
 <tr>
-<td>resI_catastrophic_fault_toggle</td>
-<td>Current-Based Resistor Fault Toggle</td>
+<td>Catastrophic Fault Toggle</td>
+<td>Input for total component failure (Boolean, 0 or unconnected for regular operation)</td>
 </tr>
-</tbody>
-
-</table>
-<h3><strong><span style="color: #0000ff;">Run Script Inputs: Degradation Input ( > 0.0 )</span></strong></h3>
-<table border="5">  
 <tr>
-<td>resI_degradation_input</td>
-<td>Current-Based Resistor Degradation Input</td>
-</tr>
-</tbody>
-
-</table>
-<h3><strong><span style="color: #0000ff;">Run Script Inputs: Degradation-Driving Parameter Adjustment ( < 1.0 )</span></strong></h3>
-<table border="5">  
-<tr>
-<td>resI_resistance_adjustment</td>
-<td>Parameter Adjustment for Internal Resistance</td>
+<td>Degradation Parameter</td>
+<td>Gradual degrading input for resistance (0 or unconnected for regular operation.  Resistance is multiplied by any other value directly.)</td>
 </tr>
 </tbody>
 
