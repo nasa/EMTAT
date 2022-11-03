@@ -20,8 +20,8 @@ I=str2num(get_param(blockHandle,'I_max_i'));
 P_in_max = str2num(get_param(blockHandle,'P_in_max_i'));
 K = str2num(get_param(blockHandle,'K_i'));
 % nPhases = 3; %hardcode/placeholder
-V_nom=str2num(get_param(blockHandle,'V_nom_i'))
-P_Fe_Nom = str2num(get_param(blockHandle,'P_Fe_Nom_i'))
+V_nom=str2num(get_param(blockHandle,'V_nom_i'));
+P_Fe_Nom = str2num(get_param(blockHandle,'P_Fe_Nom_i'));
 I_nom = str2num(get_param(blockHandle,'I_nom_i'));
 PF=str2num(get_param(blockHandle,'PF_nom_i'));
 CalculatePFe=str2num(get_param(blockHandle,'P_Fe_Calc_Flag'));
@@ -30,8 +30,8 @@ T_max_i = str2num(get_param(blockHandle,'T_max_i'));
 %Call iDesign m file that calculates component values
 %based on operating conditions:
 
-MassEst_M = P_out_max * (10.265) - (.0027)*(P_out_max^2); 
-
+MassEst_M = P_out_max * (.00198) + 40; 
+%based on Tema LPMR series motors, max W to kg
 
 [PolePairs,LamPM_M, R_M, L_M, P_Fe_nom, S_nom, T_nom, P_out_max, I_max, P_in_max, T_max]= ...
 iDesign_SS_PMSM_USUnits(nPoles,Rs,Ls,S_nom,T_nom,P_out_max,I,P_in_max,K,V_nom,P_Fe_Nom,I_nom,PF,CalculatePFe,T_max_i)
