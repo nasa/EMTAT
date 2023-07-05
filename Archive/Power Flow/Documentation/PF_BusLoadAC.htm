@@ -1,0 +1,67 @@
+﻿<h2><span style="color: #003300;"><strong>Power Flow DC Load Bus</strong></span></h2>
+<h3>&nbsp;</h3>
+<h3><strong><span style="color: #0000ff;">Block Description</span></strong></h3>
+<p>The load bus component enables the addition of external known power loads. For this block, a complex power load is defined. This complex power is then compared with a calculated complex power input to determine a power error that can be used to back calculate the system voltages. The basic equations that govern the block are shown in the equation below. Note: P and Q (the bussed signals contained in Data) are calculated values, P_M and Q_M are known values, and P_er and Q_er are dependents to be driven to zero by the solver</p>
+<p><strong><em>Vin = Vout</em></strong></p>
+<div data-ccp-timestamp="1561055100545"><strong><em>S = Vin &times; &sum;I*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</em></strong><em>(Note that I* is the conjugate of complex current)</em></div>
+<div data-ccp-timestamp="1561055100545">&nbsp;</div>
+<div data-ccp-timestamp="1561055100545"><strong><em>P_Er = P - P_M</em></strong></div>
+<div data-ccp-timestamp="1561055100545">&nbsp;</div>
+<div data-ccp-timestamp="1561055100545"><strong><em>Q_Er = Q - Q_M</em></strong></div>
+<div data-ccp-timestamp="1561055100545">&nbsp;</div>
+<h3><strong><span style="color: #0000ff;">Mask Parameters</span></strong></h3>
+<table border="5">
+<tbody>
+<tr>
+<td>PeInEN_M</td>
+<td>Externally defined real power</td>
+</tr>
+<tr>
+<td>P_M</td>
+<td>User defined constant real power</td>
+</tr>
+<tr>
+<td>QeInEN__M</td>
+<td>Externally defined reactive Power</td>
+</tr>
+<tr>
+<td>Q_M</td>
+<td>User defined constant reactive power</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h3><strong><span style="color: #0000ff;">Input Variables</span></strong></h3>
+<table style="height: 93px;" border="5" width="613">
+<tbody>
+<tr>
+<td style="width: 53px;">Vin</td>
+<td style="width: 536px;">Voltage at side A. It can be a scalar value for a real voltage or a vector for a phasor voltage where the first element is magnitude and the second is phase angle</td>
+</tr>
+<tr>
+<td style="width: 53px;">I_comp</td>
+<td style="width: 536px;">Complex current through node</td>
+</tr>
+</tbody>
+</table>
+<h3><strong><span style="color: #0000ff;">Output Variables</span></strong></h3>
+<table style="height: 134px;" border="5" width="614">
+<tbody>
+<tr>
+<td style="width: 35px;">Vout</td>
+<td style="width: 555px;">Voltage at side B</td>
+</tr>
+<tr>
+<td style="width: 35px;">P_Er</td>
+<td style="width: 555px;">difference between calculated real power and specified real power P_M or PeInEN_M. This is a solver dependent variable to be driven to zero by the solver.</td>
+</tr>
+<tr>
+<td style="width: 35px;">Q_Er</td>
+<td style="width: 555px;">difference between calculated real power and specified real power Q_M or QeInEN_M. This is a solver dependent variable to be driven to zero by the solver.</td>
+</tr>
+<tr>
+<td style="width: 35px;">Data</td>
+<td style="width: 555px;">Bussed output consisting of calculated P (Real Power) and Q (Reactive Power)</td>
+</tr>
+</tbody>
+</table>
