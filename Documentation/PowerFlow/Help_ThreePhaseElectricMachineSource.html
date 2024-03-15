@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2021b"><title>Three Phase Electric Machine (Source)</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(213, 80, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 20px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.S2 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }</style></head><body><div class = rtcContent><h1  class = 'S0'><span>Three Phase Electric Machine (Source)</span></h1><h2  class = 'S1'><span>Block Inputs</span></h2><div  class = 'S2'><span>N - Rotational Velocity, rpm (n x 1)</span></div><div  class = 'S2'><span>I_L_rms - Line Root-Mean-Squared Current, Irms (n x 1)</span></div><div  class = 'S2'><span>Fail? - Failure Toggle, 0 = Normal Operation/1 = Failure (n x 1)</span></div><div  class = 'S2'><span>Deg - Percent Degredation, 0 = No Degredation to 1 = Full Degredation, (n x 1)</span></div><div  class = 'S2'><span>T(t-1) - One Time Step Delayed Torque, lbf-ft (n x 1)</span></div><h2  class = 'S1'><span>Block Outputs</span></h2><div  class = 'S2'><span>V_LN_rms - Line to Neutral Root-Mean-Square Voltage, V_rms (n x 1)</span></div><div  class = 'S2'><span>T - Torque, lbf-ft (n x 1)</span></div><div  class = 'S2'><span>Outputs - Bus of Block Inner Variables</span></div><div  class = 'S2'><span>    Pmech - Mechanical Power, W (n x 1)</span></div><div  class = 'S2'><span>    Pelec - Electrical Power, W (n x 1)</span></div><div  class = 'S2'><span>    Eff - Efficiency (n x 1)</span></div><div  class = 'S2'><span>    N - Rotational Velocity, rpm (n x 1)</span></div><div  class = 'S2'><span>    T - Torque, lbf-ft (n x 1)</span></div><div  class = 'S2'><span>    Tdot - Torque Derivative, lbf-ft/s (n x 1)</span></div><div  class = 'S2'><span>    I_L_rms - Line Root-Mean-Squared Current, Irms (n x 1)</span></div><div  class = 'S2'><span>    V_LN_rms - Line to Neutral Root-Mean-Square Voltage, V_rms (n x 1)</span></div><div  class = 'S2'><span>    Ploss - Power Loss, W (n x 1)</span></div><div  class = 'S2'><span>    Tset or T* - Torque Setpoint, lbf-ft (n x 1)</span></div><div  class = 'S2'><span>    OCFail - Open Circuit Failure, 0 = No Failure/1 = Failure (n x 1)</span></div><div  class = 'S2'><span>    DegFail - Degredation Failure, 0 = No Failure/1 = Failure (n x 1)</span></div><div  class = 'S2'><span>    Deg - Percent Degredation, 0 = No Degredation to 1 = Full Degredation, (n x 1)</span></div><div  class = 'S2'><span>Ploss - Power Loss, W (n x 1)</span></div><div  class = 'S2'><span>T(t) - Torque to be One Time Step Delayed, lbf-ft (n x 1)</span></div><h2  class = 'S1'><span>Block Mask</span></h2><div  class = 'S2'><span>X_C_SpeedVec_M - Efficiency Table Speed Vector, rpm (m x 1)</span></div><div  class = 'S2'><span>Y_C_TorqueVec_M - Efficiency Table Torque Vector, lbf-ft (p x 1)</span></div><div  class = 'S2'><span>T_C_EffArray_M - Efficiency Table Matrix (m x p)</span></div><div  class = 'S2'><span>Ke - Back Electromotive Force (EMF) Constant, V_LL_peak/rpm</span></div><div  class = 'S2'><span>Mode - Faulure Mode Selector, 1 - Open Circuit Failure/2 - Degredation Failure (n x 1)</span></div><h2  class = 'S1'><span>Block Calculations</span></h2><div  class = 'S2'><span>Pmech = ((2*pi) / 60) * N * 1.35582 * T</span></div><div  class = 'S2'><span>Pelec = 3 * Ke * (1/sqrt(3)) * (1/sqrt(2)) * I_L_rms</span></div><div  class = 'S2'><span>T = (Pelec * Eff(T,N)) / N   when    Pelec &gt; 0</span></div><div  class = 'S2'><span>T = Pelec *  / (N * Eff(T,N))    when    Pelec &lt;= 0</span></div><div  class = 'S2'><span>Ploss = abs(abs(Pmech) - abs(Pelec))</span></div><h2  class = 'S1'><span>General Variables</span></h2><div  class = 'S2'><span>t - Time, sec</span></div><div  class = 'S2'><span>n - Size of Input/Output Vector</span></div><div  class = 'S2'><span>m - Size of Efficiency Table Speed Vector</span></div><div  class = 'S2'><span>p - Size of Efficiency Table Torque Vector</span></div><div  class = 'S2'><span>V_LL_peak - Line to Line Peak Voltage</span></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% Three Phase Electric Machine (Source)
+%% Block Inputs
+% N - Rotational Velocity, rpm (n x 1)
+% 
+% I_L_rms - Line Root-Mean-Squared Current, Irms (n x 1)
+% 
+% Fail? - Failure Toggle, 0 = Normal Operation/1 = Failure (n x 1)
+% 
+% Deg - Percent Degredation, 0 = No Degredation to 1 = Full Degredation, (n 
+% x 1)
+% 
+% T(t-1) - One Time Step Delayed Torque, lbf-ft (n x 1)
+%% Block Outputs
+% V_LN_rms - Line to Neutral Root-Mean-Square Voltage, V_rms (n x 1)
+% 
+% T - Torque, lbf-ft (n x 1)
+% 
+% Outputs - Bus of Block Inner Variables
+% 
+% Pmech - Mechanical Power, W (n x 1)
+% 
+% Pelec - Electrical Power, W (n x 1)
+% 
+% Eff - Efficiency (n x 1)
+% 
+% N - Rotational Velocity, rpm (n x 1)
+% 
+% T - Torque, lbf-ft (n x 1)
+% 
+% Tdot - Torque Derivative, lbf-ft/s (n x 1)
+% 
+% I_L_rms - Line Root-Mean-Squared Current, Irms (n x 1)
+% 
+% V_LN_rms - Line to Neutral Root-Mean-Square Voltage, V_rms (n x 1)
+% 
+% Ploss - Power Loss, W (n x 1)
+% 
+% Tset or T* - Torque Setpoint, lbf-ft (n x 1)
+% 
+% OCFail - Open Circuit Failure, 0 = No Failure/1 = Failure (n x 1)
+% 
+% DegFail - Degredation Failure, 0 = No Failure/1 = Failure (n x 1)
+% 
+% Deg - Percent Degredation, 0 = No Degredation to 1 = Full Degredation, (n 
+% x 1)
+% 
+% Ploss - Power Loss, W (n x 1)
+% 
+% T(t) - Torque to be One Time Step Delayed, lbf-ft (n x 1)
+%% Block Mask
+% X_C_SpeedVec_M - Efficiency Table Speed Vector, rpm (m x 1)
+% 
+% Y_C_TorqueVec_M - Efficiency Table Torque Vector, lbf-ft (p x 1)
+% 
+% T_C_EffArray_M - Efficiency Table Matrix (m x p)
+% 
+% Ke - Back Electromotive Force (EMF) Constant, V_LL_peak/rpm
+% 
+% Mode - Faulure Mode Selector, 1 - Open Circuit Failure/2 - Degredation Failure 
+% (n x 1)
+%% Block Calculations
+% Pmech = ((2*pi) / 60) * N * 1.35582 * T
+% 
+% Pelec = 3 * Ke * (1/sqrt(3)) * (1/sqrt(2)) * I_L_rms
+% 
+% T = (Pelec * Eff(T,N)) / N   when    Pelec > 0
+% 
+% T = Pelec *  / (N * Eff(T,N))    when    Pelec <= 0
+% 
+% Ploss = abs(abs(Pmech) - abs(Pelec))
+%% General Variables
+% t - Time, sec
+% 
+% n - Size of Input/Output Vector
+% 
+% m - Size of Efficiency Table Speed Vector
+% 
+% p - Size of Efficiency Table Torque Vector
+% 
+% V_LL_peak - Line to Line Peak Voltage
+##### SOURCE END #####
+-->
+</div></body></html>

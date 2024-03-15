@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2022b"><title>Battery</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(192, 76, 11); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 20px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.S2 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }</style></head><body><div class = rtcContent><h1  class = 'S0'><span>Battery</span></h1><h2  class = 'S1'><span>Block Inputs</span></h2><div  class = 'S2'><span>I - Battery Current Output, Amps,  Sign Convention: I &gt; 0 =&gt; discharging, I &lt; 0 =&gt; charging (n x 1)</span></div><div  class = 'S2'><span>DoD - Depth of Discharge, C (integrated current I) (n x 1)</span></div><h2  class = 'S1'><span>Block Outputs</span></h2><div  class = 'S2'><span>Vout - Battery Voltage, V (n x 1)</span></div><div  class = 'S2'><span>Outputs - Bus of Block Inner Variables</span></div><div  class = 'S2'><span>	Vout - Battery Voltage, V (n x 1)</span></div><div  class = 'S2'><span>	SoC - State of Charge, % (n x 1)</span></div><div  class = 'S2'><span>	i - Battery Current, A (n x 1)</span></div><div  class = 'S2'><span>	Ploss - Power Loss, W (n x 1)</span></div><div  class = 'S2'><span>	State - Charge State (1 = Discharging, 0 = Charging) (n x 1)</span></div><div  class = 'S2'><span>	DoD - Depth of Discharge, C (n x 1)</span></div><div  class = 'S2'><span>Ploss - Power Loss, W (n x 1)</span></div><div  class = 'S2'><span>I - Battery Current to Integrator, C/s (n x 1)</span></div><h2  class = 'S1'><span>Block Mask</span></h2><div  class = 'S2'><span>ESR - Equivalent Series Resistance, Ohms (1 x 1)</span></div><div  class = 'S2'><span>Vcharge_vec - Battery Voltage Charge Curve, V (1 x m)</span></div><div  class = 'S2'><span>Vdischarge_vec - Battery Voltage Discharge Curve, V (1 x m)</span></div><div  class = 'S2'><span>It_vec - Capacity Table, Ah (1 x m)</span></div><h2  class = 'S1'><span>Block Calculations</span></h2><div  class = 'S2'><span>Vbatt determined from charge/discharge tables</span></div><div  class = 'S2'><span>Vout = V_batt - ESR*Iout</span></div><div  class = 'S2'><span>Ploss = Iout^2 * ESR</span></div><div  class = 'S2'><span>SoC = 100% * ((max(It_vec) - DoD)/max(It_vec))</span></div><h2  class = 'S1'><span>General Variables</span></h2><div  class = 'S2'><span>n - Size of Input/Output Vector</span></div><div  class = 'S2'><span>m - Length of capacity/voltage curves</span></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% Battery
+%% Block Inputs
+% I - Battery Current Output, Amps,  Sign Convention: I > 0 => discharging, 
+% I < 0 => charging (n x 1)
+% 
+% DoD - Depth of Discharge, C (integrated current I) (n x 1)
+%% Block Outputs
+% Vout - Battery Voltage, V (n x 1)
+% 
+% Outputs - Bus of Block Inner Variables
+% 
+% Vout - Battery Voltage, V (n x 1)
+% 
+% SoC - State of Charge, % (n x 1)
+% 
+% i - Battery Current, A (n x 1)
+% 
+% Ploss - Power Loss, W (n x 1)
+% 
+% State - Charge State (1 = Discharging, 0 = Charging) (n x 1)
+% 
+% DoD - Depth of Discharge, C (n x 1)
+% 
+% Ploss - Power Loss, W (n x 1)
+% 
+% I - Battery Current to Integrator, C/s (n x 1)
+%% Block Mask
+% ESR - Equivalent Series Resistance, Ohms (1 x 1)
+% 
+% Vcharge_vec - Battery Voltage Charge Curve, V (1 x m)
+% 
+% Vdischarge_vec - Battery Voltage Discharge Curve, V (1 x m)
+% 
+% It_vec - Capacity Table, Ah (1 x m)
+%% Block Calculations
+% Vbatt determined from charge/discharge tables
+% 
+% Vout = V_batt - ESR*Iout
+% 
+% Ploss = Iout^2 * ESR
+% 
+% SoC = 100% * ((max(It_vec) - DoD)/max(It_vec))
+%% General Variables
+% n - Size of Input/Output Vector
+% 
+% m - Length of capacity/voltage curves
+##### SOURCE END #####
+-->
+</div></body></html>

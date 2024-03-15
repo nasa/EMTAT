@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2022b"><title>Cable </title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(192, 76, 11); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 20px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.S2 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }</style></head><body><div class = rtcContent><h1  class = 'S0'><span>Cable </span></h1><h2  class = 'S1'><span>Block Inputs</span></h2><div  class = 'S2'><span>V_1 - Voltage In, V (n x 1)</span></div><div  class = 'S2'><span>I = Current Out, A (n x 1)</span></div><div  class = 'S2'><span>Fail? - Failure Toggle, 0 = Normal Operation/1 = Failure (n x 1)</span></div><div  class = 'S2'><span>I(t-1) = One Step Time Delayed Current Out, A (n x 1)</span></div><h2  class = 'S1'><span>Block Outputs</span></h2><div  class = 'S2'><span>V_2 - Voltage Out, V (n x 1)</span></div><div  class = 'S2'><span>Outputs - Bus of Block Inner Variables</span></div><div  class = 'S2'><span>    P_2 - Electrical Power Out, W (n x 1)</span></div><div  class = 'S2'><span>    P_1 - Electrical Power In, W (n x 1)</span></div><div  class = 'S2'><span>    I = Current In, A (n x 1)</span></div><div  class = 'S2'><span>    V_1 - Voltage In, V (n x 1)</span></div><div  class = 'S2'><span>    V_2 - Voltage Out, V (n x 1)</span></div><div  class = 'S2'><span>    R - Resistance, ohm (n x 1)</span></div><div  class = 'S2'><span>    Ploss - Power Loss, W (n x 1)</span></div><div  class = 'S2'><span>Ploss - Power Loss, W (n x 1)</span></div><div  class = 'S2'><span>I = Current In, A (n x 1)</span></div><div  class = 'S2'><span>I(t-1) = Current Out to be One Time Step Delayed, A (n x 1)</span></div><h2  class = 'S1'><span>Block Mask</span></h2><div  class = 'S2'><span>R - Resistance, ohm (n x 1)</span></div><h2  class = 'S1'><span>Block Calculations</span></h2><div  class = 'S2'><span>Vout = Vin - Iout(t-1) * R</span></div><div  class = 'S2'><span>Iin = Iout</span></div><h2  class = 'S1'><span>General Variables</span></h2><div  class = 'S2'><span>t - Time, sec</span></div><div  class = 'S2'><span>n - Size of Input/Output Vector</span></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% Cable 
+%% Block Inputs
+% V_1 - Voltage In, V (n x 1)
+% 
+% I = Current Out, A (n x 1)
+% 
+% Fail? - Failure Toggle, 0 = Normal Operation/1 = Failure (n x 1)
+% 
+% I(t-1) = One Step Time Delayed Current Out, A (n x 1)
+%% Block Outputs
+% V_2 - Voltage Out, V (n x 1)
+% 
+% Outputs - Bus of Block Inner Variables
+% 
+% P_2 - Electrical Power Out, W (n x 1)
+% 
+% P_1 - Electrical Power In, W (n x 1)
+% 
+% I = Current In, A (n x 1)
+% 
+% V_1 - Voltage In, V (n x 1)
+% 
+% V_2 - Voltage Out, V (n x 1)
+% 
+% R - Resistance, ohm (n x 1)
+% 
+% Ploss - Power Loss, W (n x 1)
+% 
+% Ploss - Power Loss, W (n x 1)
+% 
+% I = Current In, A (n x 1)
+% 
+% I(t-1) = Current Out to be One Time Step Delayed, A (n x 1)
+%% Block Mask
+% R - Resistance, ohm (n x 1)
+%% Block Calculations
+% Vout = Vin - Iout(t-1) * R
+% 
+% Iin = Iout
+%% General Variables
+% t - Time, sec
+% 
+% n - Size of Input/Output Vector
+##### SOURCE END #####
+-->
+</div></body></html>
