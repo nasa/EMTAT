@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2021b"><title>AC-AC Transformer (Power Loss Map)</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(213, 80, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 20px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.S2 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }</style></head><body><div class = rtcContent><h1  class = 'S0'><span>AC-AC Transformer (Power Loss Map)</span></h1><h2  class = 'S1'><span>Block Inputs</span></h2><div  class = 'S2'><span>V_LN_rms_1 - Line-to-Neutral Root-Mean-Squared Input Voltage, Vrms (n x 1)</span></div><div  class = 'S2'><span>I_L_rms_2 - Line Root-Mean-Squared Output Current, Arms (n x 1)</span></div><div  class = 'S2'><span>Fail? - Failure Toggle, 0 = Normal Operation/1 = Failure (n x 1)</span></div><div  class = 'S2'><span>Deg - Percent Degredation, 0 = No Degredation to 1 = Full Degredation, (n x 1)</span></div><h2  class = 'S1'><span>Block Outputs</span></h2><div  class = 'S2'><span>V_LN_rms_2 - Line-to-Neutral Root-Mean-Squared Output Voltage, Vrms (n x 1)</span></div><div  class = 'S2'><span>Outputs - Bus of Block Inner Variables</span></div><div  class = 'S2'><span>    P_AC_1 - Input or Source Power, W (n x 1)</span></div><div  class = 'S2'><span>    P_AC_2 - Output or Load Power, W (n x 1)</span></div><div  class = 'S2'><span>    Eff - Efficiency (n x 1)</span></div><div  class = 'S2'><span>    V_LN_rms_2 - Line-to-Neutral Root-Mean-Squared Output Voltage, Vrms (n x 1)</span></div><div  class = 'S2'><span>    V_LN_rms_1 - Line-to-Neutral Root-Mean-Squared Input Voltage, Vrms (n x 1)</span></div><div  class = 'S2'><span>    I_L_rms_2 - Line Root-Mean-Squared Output Current, Arms (n x 1)</span></div><div  class = 'S2'><span>    I_L_rms_1 - Line Root-Mean-Squared Input Current, Arms (n x 1)</span></div><div  class = 'S2'><span>    Ploss - Power Loss, W (n x 1)</span></div><div  class = 'S2'><span>Ploss - Power Loss, W (n x 1)</span></div><div  class = 'S2'><span>I_L_rms_1 - Line Root-Mean-Squared Input Current, Arms (n x 1)</span></div><h2  class = 'S1'><span>Block Mask</span></h2><div  class = 'S2'><span>X_C_VoltageAC1Vec_M - Input Line to Neutral Root Mean Squared Voltage Vector, Vrms (m x 1)</span></div><div  class = 'S2'><span>Y_C_CurrentAC2Vec_M - Output Line Root Mean Squared Current  Vector,, Arms (p x 1)</span></div><div  class = 'S2'><span>T_C_PowLossArray_M - Power Loss Table, W (m x p)</span></div><div  class = 'S2'><span>K - Transformer Ratio</span></div><div  class = 'S2'><span>Mode - Faulure Mode Selector, 1 - Open Circuit Failure/2 - Degredation Failure (n x 1)</span></div><div  class = 'S2'><span>Plosslim - Power Loss Limit, W</span></div><div  class = 'S2'><span>The Deg parameter adds a percentage of the Plosslim parameter to the value used in the T_C_PlossArray_M maxtrix at the operating point. A Deg of 0 and 1 means 0% and 100% of the Plosslim is applied, respectively.</span></div><h2  class = 'S1'><span>Block Calculations</span></h2><div  class = 'S2'><span>V_LN_rms_2 = K * V_LN_rms_1</span></div><div  class = 'S2'><span>P_AC_2 = V_LN_rms_2 * I_L_rms_2</span></div><div  class = 'S2'><span>P_AC_1 = P_AC_2 + Ploss(V_LN_rms_1, I_L_rms_2)</span></div><div  class = 'S2'><span>I_L_rms_1 = P_AC_1/V_LN_rms_1</span></div><h2  class = 'S1'><span>General Variables</span></h2><div  class = 'S2'><span>n - Size of Input/Output Vector</span></div><div  class = 'S2'><span>m - Size of Power Loss Table Input Voltage (V_LN_rms_1) Vector</span></div><div  class = 'S2'><span>p - Size of Power Loss Table Output Current (I_L_rms_2) Vector</span></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% AC-AC Transformer (Power Loss Map)
+%% Block Inputs
+% V_LN_rms_1 - Line-to-Neutral Root-Mean-Squared Input Voltage, Vrms (n x 1)
+% 
+% I_L_rms_2 - Line Root-Mean-Squared Output Current, Arms (n x 1)
+% 
+% Fail? - Failure Toggle, 0 = Normal Operation/1 = Failure (n x 1)
+% 
+% Deg - Percent Degredation, 0 = No Degredation to 1 = Full Degredation, (n 
+% x 1)
+%% Block Outputs
+% V_LN_rms_2 - Line-to-Neutral Root-Mean-Squared Output Voltage, Vrms (n x 1)
+% 
+% Outputs - Bus of Block Inner Variables
+% 
+% P_AC_1 - Input or Source Power, W (n x 1)
+% 
+% P_AC_2 - Output or Load Power, W (n x 1)
+% 
+% Eff - Efficiency (n x 1)
+% 
+% V_LN_rms_2 - Line-to-Neutral Root-Mean-Squared Output Voltage, Vrms (n x 1)
+% 
+% V_LN_rms_1 - Line-to-Neutral Root-Mean-Squared Input Voltage, Vrms (n x 1)
+% 
+% I_L_rms_2 - Line Root-Mean-Squared Output Current, Arms (n x 1)
+% 
+% I_L_rms_1 - Line Root-Mean-Squared Input Current, Arms (n x 1)
+% 
+% Ploss - Power Loss, W (n x 1)
+% 
+% Ploss - Power Loss, W (n x 1)
+% 
+% I_L_rms_1 - Line Root-Mean-Squared Input Current, Arms (n x 1)
+%% Block Mask
+% X_C_VoltageAC1Vec_M - Input Line to Neutral Root Mean Squared Voltage Vector, 
+% Vrms (m x 1)
+% 
+% Y_C_CurrentAC2Vec_M - Output Line Root Mean Squared Current  Vector,, Arms 
+% (p x 1)
+% 
+% T_C_PowLossArray_M - Power Loss Table, W (m x p)
+% 
+% K - Transformer Ratio
+% 
+% Mode - Faulure Mode Selector, 1 - Open Circuit Failure/2 - Degredation Failure 
+% (n x 1)
+% 
+% Plosslim - Power Loss Limit, W
+% 
+% The Deg parameter adds a percentage of the Plosslim parameter to the value 
+% used in the T_C_PlossArray_M maxtrix at the operating point. A Deg of 0 and 
+% 1 means 0% and 100% of the Plosslim is applied, respectively.
+%% Block Calculations
+% V_LN_rms_2 = K * V_LN_rms_1
+% 
+% P_AC_2 = V_LN_rms_2 * I_L_rms_2
+% 
+% P_AC_1 = P_AC_2 + Ploss(V_LN_rms_1, I_L_rms_2)
+% 
+% I_L_rms_1 = P_AC_1/V_LN_rms_1
+%% General Variables
+% n - Size of Input/Output Vector
+% 
+% m - Size of Power Loss Table Input Voltage (V_LN_rms_1) Vector
+% 
+% p - Size of Power Loss Table Output Current (I_L_rms_2) Vector
+##### SOURCE END #####
+-->
+</div></body></html>

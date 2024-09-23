@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2024a"><title>AC-DC Rectifier (Power Loss Map)</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(192, 76, 11); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 20px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.S2 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }</style></head><body><div class = rtcContent><h1  class = 'S0'><span>AC-DC Rectifier (Power Loss Map)</span></h1><h2  class = 'S1'><span>Block Inputs</span></h2><div  class = 'S2'><span>V_LN_rms - Line to Neutral Root-Mean-Square Voltage, Vrms (n x 1)</span></div><div  class = 'S2'><span>I - Current, A (n x 1)</span></div><div  class = 'S2'><span>Fail? - Failure Toggle, 0 = Normal Operation/1 = Failure (n x 1)</span></div><div  class = 'S2'><span>Deg - Percent Degredation, 0 = No Degredation to 1 = Full Degredation, (n x 1)</span></div><div  class = 'S2'><span>I_L_rms(t-1) - One Time Step Delayed Line Root-Mean-Squared Current, Arms (n x 1)</span></div><h2  class = 'S1'><span>Block Outputs</span></h2><div  class = 'S2'><span>V - Source Voltage, V (n x 1)</span></div><div  class = 'S2'><span>Outputs - Bus of Block Inner Variables</span></div><div  class = 'S2'><span>    P_AC - Alternating Current (AC) Power, W (n x 1)</span></div><div  class = 'S2'><span>    P_DC - Direct Current (DC) Power, W (n x 1)</span></div><div  class = 'S2'><span>    Eff - Efficiency (n x 1)</span></div><div  class = 'S2'><span>    V_LN_rms - Line to Neutral Root-Mean-Square Voltage, Vrms (n x 1)</span></div><div  class = 'S2'><span>    V - Source Voltage, V (n x 1)</span></div><div  class = 'S2'><span>    Vdot - Source Voltage Derivative, V/sec (n x 1)</span></div><div  class = 'S2'><span>    I_L_rms - Line Root-Mean-Squared Current, Arms (n x 1)</span></div><div  class = 'S2'><span>    I - Current, A (n x 1)</span></div><div  class = 'S2'><span>    Idot - Current Derivative, A/sec (n x 1)</span></div><div  class = 'S2'><span>    Ploss - Power Loss, W (n x 1)</span></div><div  class = 'S2'><span>    OCFail - Open Circuit Failure, 0 = No Failure/1 = Failure (n x 1)</span></div><div  class = 'S2'><span>    DegFail - Degredation Failure, 0 = No Failure/1 = Failure (n x 1)</span></div><div  class = 'S2'><span>    Deg - Percent Degredation, 0 = No Degredation to 1 = Full Degredation, (n x 1)</span></div><div  class = 'S2'><span>Ploss - Power Loss, W (n x 1)</span></div><div  class = 'S2'><span>I_L_rms - Line Root-Mean-Squared Current, Arms (n x 1)</span></div><div  class = 'S2'><span>I_L_rms(t) - Line Root-Mean-Squared Current to be One Time Step Delayed, Arms (n x 1)</span></div><h2  class = 'S1'><span>Block Mask</span></h2><div  class = 'S2'><span>X_C_VoltageInVec_M - Direct Current Voltage Vector, V (m x 1)</span></div><div  class = 'S2'><span>Y_C_RMS CurrentOutVec_M - Root-Mean-Squared Line Current Vector, Arms (p x 1)</span></div><div  class = 'S2'><span>T_C_PowLossArray_M - Power Loss Matrix, W (m x p)</span></div><div  class = 'S2'><span>Mode - Failure Mode Selector, 1 - Open Circuit Failure/2 - Degredation Failure (n x 1)</span></div><h2  class = 'S1'><span>Block Calculations</span></h2><div  class = 'S2'><span>V_LN_rms = V_DC</span></div><div  class = 'S2'><span>P_AC =  V_DC * I_L_rms</span></div><div  class = 'S2'><span>P_DC = V_LN_rms * I_DC</span></div><div  class = 'S2'><span>I_l_rms = (P_DC - Ploss(V_DC,I_L_rms)) / V_LN_rms</span></div><div  class = 'S2'><span>Eff = abs(P_AC) / abs(P_DC)    when    P_DC &gt;= P_AC</span></div><div  class = 'S2'><span>Eff = abs(P_DC) / abs(P_AC)    when    P_DC &lt; P_AC</span></div><h2  class = 'S1'><span>General Variables</span></h2><div  class = 'S2'><span>t - Time, sec</span></div><div  class = 'S2'><span>n - Size of Input/Output Vector</span></div><div  class = 'S2'><span>m - Size of Power Loss Table Voltage Vector</span></div><div  class = 'S2'><span>p - Size of Power Loss Table RMS Current Vector</span></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% AC-DC Rectifier (Power Loss Map)
+%% Block Inputs
+% V_LN_rms - Line to Neutral Root-Mean-Square Voltage, Vrms (n x 1)
+% 
+% I - Current, A (n x 1)
+% 
+% Fail? - Failure Toggle, 0 = Normal Operation/1 = Failure (n x 1)
+% 
+% Deg - Percent Degredation, 0 = No Degredation to 1 = Full Degredation, (n 
+% x 1)
+% 
+% I_L_rms(t-1) - One Time Step Delayed Line Root-Mean-Squared Current, Arms 
+% (n x 1)
+%% Block Outputs
+% V - Source Voltage, V (n x 1)
+% 
+% Outputs - Bus of Block Inner Variables
+% 
+% P_AC - Alternating Current (AC) Power, W (n x 1)
+% 
+% P_DC - Direct Current (DC) Power, W (n x 1)
+% 
+% Eff - Efficiency (n x 1)
+% 
+% V_LN_rms - Line to Neutral Root-Mean-Square Voltage, Vrms (n x 1)
+% 
+% V - Source Voltage, V (n x 1)
+% 
+% Vdot - Source Voltage Derivative, V/sec (n x 1)
+% 
+% I_L_rms - Line Root-Mean-Squared Current, Arms (n x 1)
+% 
+% I - Current, A (n x 1)
+% 
+% Idot - Current Derivative, A/sec (n x 1)
+% 
+% Ploss - Power Loss, W (n x 1)
+% 
+% OCFail - Open Circuit Failure, 0 = No Failure/1 = Failure (n x 1)
+% 
+% DegFail - Degredation Failure, 0 = No Failure/1 = Failure (n x 1)
+% 
+% Deg - Percent Degredation, 0 = No Degredation to 1 = Full Degredation, (n 
+% x 1)
+% 
+% Ploss - Power Loss, W (n x 1)
+% 
+% I_L_rms - Line Root-Mean-Squared Current, Arms (n x 1)
+% 
+% I_L_rms(t) - Line Root-Mean-Squared Current to be One Time Step Delayed, Arms 
+% (n x 1)
+%% Block Mask
+% X_C_VoltageInVec_M - Direct Current Voltage Vector, V (m x 1)
+% 
+% Y_C_RMS CurrentOutVec_M - Root-Mean-Squared Line Current Vector, Arms (p x 
+% 1)
+% 
+% T_C_PowLossArray_M - Power Loss Matrix, W (m x p)
+% 
+% Mode - Failure Mode Selector, 1 - Open Circuit Failure/2 - Degredation Failure 
+% (n x 1)
+%% Block Calculations
+% V_LN_rms = V_DC
+% 
+% P_AC =  V_DC * I_L_rms
+% 
+% P_DC = V_LN_rms * I_DC
+% 
+% I_l_rms = (P_DC - Ploss(V_DC,I_L_rms)) / V_LN_rms
+% 
+% Eff = abs(P_AC) / abs(P_DC)    when    P_DC >= P_AC
+% 
+% Eff = abs(P_DC) / abs(P_AC)    when    P_DC < P_AC
+%% General Variables
+% t - Time, sec
+% 
+% n - Size of Input/Output Vector
+% 
+% m - Size of Power Loss Table Voltage Vector
+% 
+% p - Size of Power Loss Table RMS Current Vector
+##### SOURCE END #####
+-->
+</div></body></html>

@@ -17,4 +17,4 @@ show(lb)
 
 clear lb SP
 
-fprintf('EMTAT nninstalled. Please remove EMTAT directory from computer.\n')
+fprintf('EMTAT uninstalled. Please remove EMTAT directory from computer.\n')
