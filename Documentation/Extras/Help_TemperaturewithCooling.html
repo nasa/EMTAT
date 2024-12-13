@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2021b"><title>Temperature with Cooling</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(213, 80, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 20px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(60, 60, 60); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.S2 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(0, 0, 0); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }</style></head><body><div class = rtcContent><h1  class = 'S0'><span>Temperature with Cooling</span></h1><h2  class = 'S1'><span>Block Inputs</span></h2><div  class = 'S2'><span>Ploss - Power Loss Output from Component, W</span></div><div  class = 'S2'><span>dTamb - Change in Ambient Temperature from Sea-Level Static Conditions for a Standard Day, °F</span></div><div  class = 'S2'><span>Tamb - Ambient Temperature; Temperature at Sea-Level Static Conditions for a Standard Day, °F</span></div><div  class = 'S2'><span>Tcool - Temperature of Coolant, °F</span></div><h2  class = 'S1'><span>Block Outputs</span></h2><div  class = 'S2'><span>T - Temperature of the Electrical Component, °F</span></div><h2  class = 'S1'><span>Block Mask</span></h2><div  class = 'S2'><span>m - Mass of the Electrical Component, lbm</span></div><div  class = 'S2'><span>c_p - Specific Heat of the Electrical Component, Btu/(lbm-°F)</span></div><div  class = 'S2'><span>Q_o - Initial Heat of the Electrical Component, Btu</span></div><div  class = 'S2'><span>COP = (h*A_s) - Product of Coefficient of Convective Heat Transfer and Surface Area; Coefficient of Performance, Btu/(hr-°F)</span></div><h2  class = 'S1'><span>Block Calculations</span></h2><div  class = 'S2'><span>Q ̇</span><span> </span><span>= mc_p</span><span> </span><span>(ΔTemp)</span></div><div  class = 'S2'><span>Q ̇_convection = hA_s (Temp-Tin_Cool)</span></div><div  class = 'S2'><span>Q</span><span> ̇</span><span> =</span><span> Ploss-Q ̇_convection</span></div><div  class = 'S2'><span>Temp = int_0^t [Ploss-COP(Temp-Tin_Cool)]  </span><span>m^(-1) c_p^(-1) dt</span></div><div  class = 'S2'><span></span></div><div  class = 'S2'></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% Temperature with Cooling
+%% Block Inputs
+% Ploss - Power Loss Output from Component, W
+% 
+% dTamb - Change in Ambient Temperature from Sea-Level Static Conditions for 
+% a Standard Day, °F
+% 
+% Tamb - Ambient Temperature; Temperature at Sea-Level Static Conditions for 
+% a Standard Day, °F
+% 
+% Tcool - Temperature of Coolant, °F
+%% Block Outputs
+% T - Temperature of the Electrical Component, °F
+%% Block Mask
+% m - Mass of the Electrical Component, lbm
+% 
+% c_p - Specific Heat of the Electrical Component, Btu/(lbm-°F)
+% 
+% Q_o - Initial Heat of the Electrical Component, Btu
+% 
+% COP = (h*A_s) - Product of Coefficient of Convective Heat Transfer and Surface 
+% Area; Coefficient of Performance, Btu/(hr-°F)
+%% Block Calculations
+% Q ̇ = mc_p (ΔTemp)
+% 
+% Q ̇_convection = hA_s (Temp-Tin_Cool)
+% 
+% Q ̇ = Ploss-Q ̇_convection
+% 
+% Temp = int_0^t [Ploss-COP(Temp-Tin_Cool)]  m^(-1) c_p^(-1) dt
+% 
+% 
+% 
+%
+##### SOURCE END #####
+-->
+</div></body></html>
