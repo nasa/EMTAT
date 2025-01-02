@@ -1,5 +1,6 @@
 # EMTAT
 Electrical Modeling and Thermal Analysis Toolbox<br>
+
 <b>Introduction</b> <br>
 The Electrical Modeling and Thermal Analysis Toolbox 
 is a Simulink toolbox intended for use in the modeling and simulation of electrical 
