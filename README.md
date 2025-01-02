@@ -1,7 +1,5 @@
 # EMTAT
 Electrical Modeling and Thermal Analysis Toolbox<br>
-<meta name="keywords" content="T-MATS, TMATS, EMTAT, Control System, Numerical Methods, Newton-Raphson, Jacobian Calculation, Propulsion, Aircraft Engine, Jet, Turbofan, Turbojet, Compressor, Turbine, Nozzle, Inlet, open source, simulation, modeling, NASA, electrical, EAP, power system, hybrid, thermodynamics, turbomachinery, MATLAB, Simulink, jet, engine,  etc.">
-<b> <a href= "https://github.com/nasa/EMTAT/releases" >Click Here</a> for stable release download</b> <br> <br>
 <b>Introduction</b> <br>
 The Electrical Modeling and Thermal Analysis Toolbox 
 is a Simulink toolbox intended for use in the modeling and simulation of electrical 
