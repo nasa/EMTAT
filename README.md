@@ -39,10 +39,17 @@ may be forked at any time via the main page link.
 - George L. Thomas
 - Jonah J. Sachs-Wetstone
 - Halle E. Buescher
+- Edmond Wong
+- Jonathan Litt
+- Ellio D. Aretskin-Hariton
+- Jeffryes W. Chapman
+- Rosana Maringolo
+- Nathan Butler (Intern)
+- Thomas Carstens (Intern)
+- Samuel Faulk (Intern)
+- Gregory Fretti (Intern)
+- Auston Lowmiller (Intern)
+- Peter Matt (Intern)
 - Jackson Steiner (Intern)
 - Niyathi Prasad (Intern)
 - Lawrence Giron Jr. (Intern)
-
-
-
-
