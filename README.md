@@ -33,7 +33,7 @@ Installation instructions are detailed in the user's guide which is included wit
 EMTAT encourages open collaboration and if a user wishes to become a developer the software 
 may be forked at any time via the main page link.
 
-Current and Past Developers:
+<b>Current and Past Developers:</b>
 - Santino J. Bianco
 - Mark E. Bell
 - George L. Thomas
@@ -42,6 +42,7 @@ Current and Past Developers:
 - Jackson Steiner (Intern)
 - Niyathi Prasad (Intern)
 - Lawrence Giron Jr. (Intern)
+
 
 
 
